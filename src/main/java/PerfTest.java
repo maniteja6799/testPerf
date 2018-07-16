@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 public class PerfTest extends Thread{
 
   private Executor executor = new ThreadPoolExecutor(
-      4, Math.max(Runtime.getRuntime().availableProcessors(), 16), 60, TimeUnit.SECONDS,
+      4, Math.max(Runtime.getRuntime().availableProcessors(), 16), 10, TimeUnit.SECONDS,
       new LinkedBlockingDeque<Runnable>(1000));
 
   private String connectionTimeout= "5000";
@@ -75,7 +75,7 @@ public class PerfTest extends Thread{
       try {
         Response response1 = response.get();
         System.out.println("Response for iteration " + i +"  res: "+ response1.getStatusCode());
-        Thread.sleep(100L);
+//        Thread.sleep(100L);
       } catch (Exception e) {
         System.out.println("Failed while processing answers response iter: " + i + " exec:" + e);
 
